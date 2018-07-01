@@ -42,7 +42,7 @@ public class BankController {
 	 * @param idAccount
 	 * @throws BusinessException 
 	 */
-	@PostMapping()
+	@PostMapping("/record/add")
 	Record addRecord(@PathVariable Long idAccount, @RequestBody Record record) throws BusinessException {
 		return bankService.addRecordToAccount(idAccount, record);
 	}
