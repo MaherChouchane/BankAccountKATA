@@ -1,8 +1,8 @@
 # Kata Bank Account
 
 Spring boot Application with H2 embedded database.
----------------------------------------------------------------
 Compile & install : mvn clean install
+Run : mvn spring-boot:run
 
 GET : RETURN ACCOUNT
 ---------------------------------------------------------------
