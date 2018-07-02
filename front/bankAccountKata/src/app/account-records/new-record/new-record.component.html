@@ -1,0 +1,50 @@
+  <div class="well well-lg">
+      <div [hidden]="submitted">
+        <h3>New Record</h3>
+        <form (ngSubmit)="onSubmit()" #recordForm="ngForm">
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" class="form-control" id="amount"
+                   required
+                   [(ngModel)]="record.amount" name="amount"
+                   #amount="ngModel">
+            <div [hidden]="amount.valid || amount.pristine"
+                 class="alert alert-danger">
+                 Amount is required
+            </div>
+          </div>
+     
+          <div class="form-group">
+            <label for="power">Type</label>
+            <select class="form-control" id="type"
+                    required
+                    [(ngModel)]="record.type" name="type"
+                    #type="ngModel">
+              <option *ngFor="let type of types" [value]="type">{{type}}</option>
+            </select>
+            <div [hidden]="type.valid || type.pristine" class="alert alert-danger">
+              Type is required
+            </div>
+          </div>
+          <div class="btn-toolbar">
+              <button type="submit" class="btn btn-success" [disabled]="!recordForm.form.valid">Submit</button>
+              <button type="button" class="btn btn-default" (click)="reset(); recordForm.reset()">Reset</button>
+          </div>
+
+        </form>
+      </div>
+     
+      <div [hidden]="!submitted">
+        <h3>You submitted the following Record :</h3>
+        <div class="row">
+          <div class="col-xs-3">Amount</div>
+          <div class="col-xs-9  pull-left">{{ record.amount }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Type</div>
+          <div class="col-xs-9 pull-left">{{ record.type }}</div>
+        </div>
+        <br>
+        <button (click)="goBack()" type="button" class="btn btn-default">Back To Records</button>
+      </div>
+    </div>
